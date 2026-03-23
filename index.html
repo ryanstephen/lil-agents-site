@@ -79,9 +79,10 @@
       color: var(--text);
     }
 
-    /* Hero video */
+    /* Hero video — breaks out of container to fill 80vw */
     .hero-video {
-      width: 100%;
+      width: 80vw;
+      margin-left: calc(50% - 40vw);
       margin-bottom: 24px;
       border-radius: 12px;
       overflow: hidden;
@@ -93,11 +94,9 @@
     }
 
     .hero {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
       padding: 0 0 60px;
     }
