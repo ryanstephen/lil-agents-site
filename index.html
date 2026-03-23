@@ -107,37 +107,36 @@
       object-fit: contain;
     }
 
-    /* Video is 10s. Walk: ~3s-8.5s (idle, walk right, idle, repeat).
-       Animation = 10s to sync with video loop.
-       0-30%: idle at start pos. 30-85%: walk across. 85-100%: idle at end pos. */
+    /* Video is 10s. Walk ~3s-8.5s. Use alternate so they walk back and forth
+       without resetting. 10s matches video loop. Hold still during idle frames. */
     .walker-bruce {
-      animation: walkBruce 10s ease-in-out infinite;
+      animation: walkBruce 10s ease-in-out infinite alternate;
     }
 
     .walker-jazz {
-      animation: walkJazz 10s ease-in-out infinite;
+      animation: walkJazz 10s ease-in-out infinite alternate;
       animation-delay: -5s;
     }
 
     @keyframes walkBruce {
-      0%   { left: 10%; transform: scaleX(1); }
-      30%  { left: 10%; transform: scaleX(1); }
-      85%  { left: 55%; transform: scaleX(1); }
-      100% { left: 55%; transform: scaleX(1); }
+      0%   { left: 15%; }
+      30%  { left: 15%; }
+      85%  { left: 45%; }
+      100% { left: 45%; }
     }
 
     @keyframes walkJazz {
-      0%   { left: 70%; transform: scaleX(-1); }
-      30%  { left: 70%; transform: scaleX(-1); }
-      85%  { left: 30%; transform: scaleX(-1); }
-      100% { left: 30%; transform: scaleX(-1); }
+      0%   { left: 55%; }
+      39%  { left: 55%; }
+      87%  { left: 35%; }
+      100% { left: 35%; }
     }
 
     /* Wireframe dock */
     .dock-wireframe {
       margin: 0 auto;
-      width: 70%;
-      height: 20px;
+      width: 55%;
+      height: 36px;
     }
 
     .hero {
@@ -305,27 +304,17 @@
           </video>
         </div>
       </div>
-      <svg class="dock-wireframe" viewBox="0 0 400 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.5" y="0.5" width="399" height="19" rx="6" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="16" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="36" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="56" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="76" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="96" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <line x1="120" y1="4" x2="120" y2="16" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="132" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="152" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="172" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="192" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="212" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="232" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <line x1="256" y1="4" x2="256" y2="16" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="268" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="288" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="308" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="328" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="348" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
-        <rect x="368" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+      <svg class="dock-wireframe" viewBox="0 0 280 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="279" height="35" rx="10" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="14" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="46" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="78" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="110" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <line x1="144" y1="8" x2="144" y2="28" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="154" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="186" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="218" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="250" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
       </svg>
     </div>
 
@@ -347,17 +336,14 @@
 
       <div class="features">
         <div class="feature">
-          <div class="feature-icon">🚶</div>
           <div class="feature-title">They walk around.</div>
           <p>That's it. That's the feature.</p>
         </div>
         <div class="feature">
-          <div class="feature-icon">💬</div>
           <div class="feature-title">They think.</div>
           <p>Click to open a Claude session. Ask anything.</p>
         </div>
         <div class="feature">
-          <div class="feature-icon">🎨</div>
           <div class="feature-title">They match your mood.</div>
           <p>Peach. Midnight. Cloud. Moss.</p>
         </div>
