@@ -83,7 +83,7 @@
     .hero-video {
       width: 100%;
       margin-bottom: 24px;
-      border-radius: clamp(8px, 1.8vw, 22px);
+      border-radius: 20px;
       overflow: hidden;
     }
 
@@ -223,6 +223,10 @@
       gap: 16px;
     }
 
+    @media (min-width: 800px) {
+      .hero-video { border-radius: 18px; }
+    }
+
     @media (max-width: 500px) {
       h1 { font-size: 26px; }
       .tagline { font-size: 15px; }
@@ -248,7 +252,7 @@
 
     <main class="hero">
       <h1>Meet your dock companions.</h1>
-      <p class="tagline">Bruce and Jazz are lil animated companions that live above your dock. Each one has their own Claude session and mini window for chatting, coding, or whatever you're working on.</p>
+      <p class="tagline">Bruce and Jazz are lil ai companions that live above your dock. Each one has their own Claude session and mini window for chatting, coding, or whatever you're working on.</p>
 
       <a href="LilAgents-v1.0.zip" class="download-btn">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -269,7 +273,7 @@
         </div>
         <div class="feature">
           <div class="feature-title">They think</div>
-          <p>Raise a hand<br>when they're ready.</p>
+          <p>Agents let you know<br>when they're ready.</p>
         </div>
         <div class="feature">
           <div class="feature-title">They vibe</div>
