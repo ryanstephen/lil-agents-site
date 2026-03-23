@@ -83,8 +83,14 @@
     .hero-video {
       position: relative;
       width: 100%;
-      height: 120px;
+      height: 140px;
       margin-bottom: 24px;
+    }
+
+    .hero-stage {
+      position: relative;
+      width: 100%;
+      height: 120px;
       overflow: hidden;
     }
 
@@ -101,29 +107,37 @@
       object-fit: contain;
     }
 
+    /* Video is 10s. Walk: ~3s-8.5s (idle, walk right, idle, repeat).
+       Animation = 10s to sync with video loop.
+       0-30%: idle at start pos. 30-85%: walk across. 85-100%: idle at end pos. */
     .walker-bruce {
-      animation: walkBruce 20s linear infinite;
+      animation: walkBruce 10s ease-in-out infinite;
     }
 
     .walker-jazz {
-      animation: walkJazz 22s linear infinite;
-      animation-delay: -8s;
+      animation: walkJazz 10s ease-in-out infinite;
+      animation-delay: -5s;
     }
 
     @keyframes walkBruce {
-      0%   { left: -67px; transform: scaleX(1); }
-      48%  { left: calc(100% + 0px); transform: scaleX(1); }
-      50%  { left: calc(100% + 0px); transform: scaleX(-1); }
-      98%  { left: -67px; transform: scaleX(-1); }
-      100% { left: -67px; transform: scaleX(1); }
+      0%   { left: 10%; transform: scaleX(1); }
+      30%  { left: 10%; transform: scaleX(1); }
+      85%  { left: 55%; transform: scaleX(1); }
+      100% { left: 55%; transform: scaleX(1); }
     }
 
     @keyframes walkJazz {
-      0%   { left: calc(100% + 0px); transform: scaleX(-1); }
-      48%  { left: -67px; transform: scaleX(-1); }
-      50%  { left: -67px; transform: scaleX(1); }
-      98%  { left: calc(100% + 0px); transform: scaleX(1); }
-      100% { left: calc(100% + 0px); transform: scaleX(-1); }
+      0%   { left: 70%; transform: scaleX(-1); }
+      30%  { left: 70%; transform: scaleX(-1); }
+      85%  { left: 30%; transform: scaleX(-1); }
+      100% { left: 30%; transform: scaleX(-1); }
+    }
+
+    /* Wireframe dock */
+    .dock-wireframe {
+      margin: 0 auto;
+      width: 70%;
+      height: 20px;
     }
 
     .hero {
@@ -263,7 +277,8 @@
       .tagline { font-size: 15px; }
       .features { gap: 20px; flex-wrap: wrap; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
-      .hero-video { height: 90px; }
+      .hero-video { height: 110px; }
+      .hero-stage { height: 90px; }
       .walker { height: 90px; width: 50px; }
     }
   </style>
@@ -278,16 +293,40 @@
     </nav>
 
     <div class="hero-video">
-      <div class="walker walker-bruce">
-        <video autoplay loop muted playsinline>
-          <source src="walk-bruce.mp4" type="video/mp4">
-        </video>
+      <div class="hero-stage">
+        <div class="walker walker-bruce">
+          <video autoplay loop muted playsinline>
+            <source src="walk-bruce.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="walker walker-jazz">
+          <video autoplay loop muted playsinline>
+            <source src="walk-jazz.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="walker walker-jazz">
-        <video autoplay loop muted playsinline>
-          <source src="walk-jazz.mp4" type="video/mp4">
-        </video>
-      </div>
+      <svg class="dock-wireframe" viewBox="0 0 400 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="399" height="19" rx="6" stroke="#d0d0d0" stroke-width="1"/>
+        <rect x="16" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="36" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="56" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="76" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="96" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <line x1="120" y1="4" x2="120" y2="16" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="132" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="152" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="172" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="192" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="212" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="232" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <line x1="256" y1="4" x2="256" y2="16" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="268" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="288" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="308" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="328" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="348" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+        <rect x="368" y="4" width="12" height="12" rx="3" stroke="#d0d0d0" stroke-width="0.75"/>
+      </svg>
     </div>
 
     <main class="hero">
