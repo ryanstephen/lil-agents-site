@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lil agents — tiny AI friends for your Mac</title>
+  <meta name="description" content="Tiny animated AI companions that live on your macOS dock. Click to chat. They walk, they think, they vibe.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👀</text></svg>">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --text: #1a1a1a;
+      --text-secondary: #888;
+      --bg: #fff;
+      --accent: #1a1a1a;
+      --border: #e5e5e5;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 0 60px;
+    }
+
+    .app-icon {
+      width: 128px;
+      height: 128px;
+      border-radius: 28px;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, #fce4d6 0%, #f5c6a0 50%, #e8a87c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.06),
+        0 8px 24px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-icon-eyes {
+      font-size: 48px;
+      line-height: 1;
+      position: relative;
+      top: 2px;
+    }
+
+    .app-icon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 380px;
+      line-height: 1.55;
+      margin-bottom: 36px;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .download-btn:hover {
+      opacity: 0.85;
+    }
+
+    .download-btn:active {
+      transform: scale(0.98);
+    }
+
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    .version {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #f0f0f0;
+      color: #666;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .features {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .feature {
+      text-align: center;
+      max-width: 160px;
+    }
+
+    .feature-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 26px; }
+      .tagline { font-size: 15px; }
+      .features { gap: 20px; flex-wrap: wrap; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a href="/" class="logo">lil agents</a>
+      <a href="https://github.com/ryanstephen" target="_blank" rel="noopener">Updates</a>
+    </nav>
+
+    <main class="hero">
+      <div class="app-icon">
+        <span class="app-icon-eyes">👀</span>
+      </div>
+
+      <h1>AI that lives on your dock.</h1>
+      <p class="tagline">Tiny animated companions that walk above your macOS dock. Click one to talk to Claude. They walk, they think, they vibe.</p>
+
+      <a href="#" class="download-btn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 1v10M4 8l4 4 4-4M2 14h12"/>
+        </svg>
+        Download for macOS
+      </a>
+
+      <div class="version">
+        <span class="badge">Beta</span>
+        v1.0 · Requires macOS Sequoia
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🚶</div>
+          <p>They walk around. That's it. That's the feature.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <p>Click one to open a Claude terminal. Ask anything.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <p>Four moods. Peach, Midnight, Cloud, Moss.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>&copy; 2026 Ryan Stephen</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
