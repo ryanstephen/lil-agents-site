@@ -57,6 +57,15 @@
       letter-spacing: -0.01em;
       color: var(--text);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
     }
 
     nav a {
@@ -70,6 +79,53 @@
       color: var(--text);
     }
 
+    /* Hero video area */
+    .hero-video {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .walker {
+      position: absolute;
+      bottom: 0;
+      height: 120px;
+      width: 67px;
+    }
+
+    .walker video {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .walker-bruce {
+      animation: walkBruce 20s linear infinite;
+    }
+
+    .walker-jazz {
+      animation: walkJazz 22s linear infinite;
+      animation-delay: -8s;
+    }
+
+    @keyframes walkBruce {
+      0%   { left: -67px; transform: scaleX(1); }
+      48%  { left: calc(100% + 0px); transform: scaleX(1); }
+      50%  { left: calc(100% + 0px); transform: scaleX(-1); }
+      98%  { left: -67px; transform: scaleX(-1); }
+      100% { left: -67px; transform: scaleX(1); }
+    }
+
+    @keyframes walkJazz {
+      0%   { left: calc(100% + 0px); transform: scaleX(-1); }
+      48%  { left: -67px; transform: scaleX(-1); }
+      50%  { left: -67px; transform: scaleX(1); }
+      98%  { left: calc(100% + 0px); transform: scaleX(1); }
+      100% { left: calc(100% + 0px); transform: scaleX(-1); }
+    }
+
     .hero {
       flex: 1;
       display: flex;
@@ -77,34 +133,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 0 60px;
-    }
-
-    .app-icon {
-      width: 128px;
-      height: 128px;
-      border-radius: 28px;
-      margin-bottom: 32px;
-      box-shadow:
-        0 1px 3px rgba(0,0,0,0.06),
-        0 8px 24px rgba(0,0,0,0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .app-icon::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 28px;
-      border: 1px solid rgba(0,0,0,0.06);
-      pointer-events: none;
+      padding: 0 0 60px;
     }
 
     h1 {
@@ -118,7 +147,7 @@
     .tagline {
       font-size: 17px;
       color: var(--text-secondary);
-      max-width: 380px;
+      max-width: 420px;
       line-height: 1.55;
       margin-bottom: 36px;
     }
@@ -234,6 +263,8 @@
       .tagline { font-size: 15px; }
       .features { gap: 20px; flex-wrap: wrap; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
+      .hero-video { height: 90px; }
+      .walker { height: 90px; width: 50px; }
     }
   </style>
 </head>
@@ -241,13 +272,25 @@
   <div class="page">
     <nav>
       <a href="/" class="logo">lil agents</a>
+      <a href="/" class="logo" style="font-weight:400">
+        <img src="icon.svg" alt="" class="logo-icon">
+      </a>
     </nav>
 
-    <main class="hero">
-      <div class="app-icon">
-        <img src="icon.svg" alt="lil agents" width="128" height="128">
+    <div class="hero-video">
+      <div class="walker walker-bruce">
+        <video autoplay loop muted playsinline>
+          <source src="walk-bruce.mp4" type="video/mp4">
+        </video>
       </div>
+      <div class="walker walker-jazz">
+        <video autoplay loop muted playsinline>
+          <source src="walk-jazz.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
+    <main class="hero">
       <h1>Meet your dock companions.</h1>
       <p class="tagline">Bruce and Jazz are lil animated companions that live above your dock. Each one has their own Claude session and mini window for chatting, coding, or whatever you're working on.</p>
 
