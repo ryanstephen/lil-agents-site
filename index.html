@@ -79,64 +79,17 @@
       color: var(--text);
     }
 
-    /* Hero video area */
+    /* Hero video */
     .hero-video {
-      position: relative;
       width: 100%;
-      height: 140px;
       margin-bottom: 24px;
-    }
-
-    .hero-stage {
-      position: relative;
-      width: 100%;
-      height: 120px;
+      border-radius: 12px;
       overflow: hidden;
     }
 
-    .walker {
-      position: absolute;
-      bottom: 0;
-      height: 120px;
-      width: 67px;
-    }
-
-    .walker video {
-      height: 100%;
+    .hero-video video {
       width: 100%;
-      object-fit: contain;
-    }
-
-    /* Video is 10s. Walk ~3s-8.5s. Use alternate so they walk back and forth
-       without resetting. 10s matches video loop. Hold still during idle frames. */
-    .walker-bruce {
-      animation: walkBruce 10s ease-in-out infinite alternate;
-    }
-
-    .walker-jazz {
-      animation: walkJazz 10s ease-in-out infinite alternate;
-      animation-delay: -5s;
-    }
-
-    @keyframes walkBruce {
-      0%   { left: 15%; }
-      30%  { left: 15%; }
-      85%  { left: 45%; }
-      100% { left: 45%; }
-    }
-
-    @keyframes walkJazz {
-      0%   { left: 55%; }
-      39%  { left: 55%; }
-      87%  { left: 35%; }
-      100% { left: 35%; }
-    }
-
-    /* Wireframe dock */
-    .dock-wireframe {
-      margin: 0 auto;
-      width: 55%;
-      height: 36px;
+      display: block;
     }
 
     .hero {
@@ -277,9 +230,6 @@
       .tagline { font-size: 15px; }
       .features { gap: 20px; flex-wrap: wrap; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
-      .hero-video { height: 110px; }
-      .hero-stage { height: 90px; }
-      .walker { height: 90px; width: 50px; }
     }
   </style>
 </head>
@@ -293,30 +243,9 @@
     </nav>
 
     <div class="hero-video">
-      <div class="hero-stage">
-        <div class="walker walker-bruce">
-          <video autoplay loop muted playsinline>
-            <source src="walk-bruce.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="walker walker-jazz">
-          <video autoplay loop muted playsinline>
-            <source src="walk-jazz.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <svg class="dock-wireframe" viewBox="0 0 280 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.5" y="0.5" width="279" height="35" rx="10" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="14" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="46" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="78" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="110" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <line x1="144" y1="8" x2="144" y2="28" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="154" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="186" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="218" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-        <rect x="250" y="6" width="24" height="24" rx="5" stroke="#d0d0d0" stroke-width="1"/>
-      </svg>
+      <video autoplay loop muted playsinline>
+        <source src="hero.mp4" type="video/mp4">
+      </video>
     </div>
 
     <main class="hero">
