@@ -6,7 +6,11 @@
   <title>lil agents — tiny AI friends for your Mac</title>
   <meta name="description" content="Tiny animated AI companions that live on your macOS dock. Click to chat. They walk, they think, they vibe.">
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👀</text></svg>">
+  <link rel="icon" href="icon.png" type="image/png">
+  <meta property="og:title" content="lil agents">
+  <meta property="og:description" content="Tiny animated AI companions that live on your macOS dock.">
+  <meta property="og:image" content="icon.png">
+  <meta property="og:type" content="website">
   <style>
     * {
       margin: 0;
@@ -81,10 +85,6 @@
       height: 128px;
       border-radius: 28px;
       margin-bottom: 32px;
-      background: linear-gradient(135deg, #fce4d6 0%, #f5c6a0 50%, #e8a87c 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       box-shadow:
         0 1px 3px rgba(0,0,0,0.06),
         0 8px 24px rgba(0,0,0,0.06);
@@ -92,11 +92,10 @@
       overflow: hidden;
     }
 
-    .app-icon-eyes {
-      font-size: 48px;
-      line-height: 1;
-      position: relative;
-      top: 2px;
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .app-icon::after {
@@ -240,7 +239,7 @@
 
     <main class="hero">
       <div class="app-icon">
-        <span class="app-icon-eyes">👀</span>
+        <img src="icon.png" alt="lil agents" width="128" height="128">
       </div>
 
       <h1>AI that lives on your dock.</h1>
