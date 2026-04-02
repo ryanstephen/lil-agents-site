@@ -5,15 +5,38 @@
         <link>https://github.com/ryanstephen/lil-agents</link>
         <description>lil agents update feed</description>
         <language>en</language>
-        <!--
-            To publish a new release:
-            1. Build, sign, notarize, staple the app
-            2. Create zip: ditto -c -k - -keepParent LilAgents.app LilAgents-vX.Y.zip
-            3. Sign for Sparkle: sign_update LilAgents-vX.Y.zip
-            4. Add a new <item> below with the edSignature and length
-            5. Upload zip to GitHub Releases
-            6. Commit appcast.xml and push
-        -->
+        <item>
+            <title>v1.2</title>
+            <description><![CDATA[
+                <h3>Pick your agent, per character</h3>
+                <p>Bruce and Jazz can now each run a different AI provider. Click the title in any chat popover to switch between Claude, Codex, Copilot, Gemini, or OpenCode — or set them all at once from the menu bar. Unavailable providers are automatically detected and grayed out.</p>
+                <h3>Fresh starts with /clear</h3>
+                <p>Type /clear or hit the ↻ button to reset a conversation and start a new session instantly — no need to quit and relaunch.</p>
+                <h3>Resize your agents</h3>
+                <p>A new Size menu lets you switch between Large, Medium, and Small characters.</p>
+                <h3>Multi-display fixes</h3>
+                <ul>
+                    <li>Characters no longer vanish when you click a secondary monitor</li>
+                    <li>Dock detection now works when the Dock is pinned to the left or right, not just the bottom</li>
+                    <li>Pinning characters to a specific display always keeps them visible</li>
+                </ul>
+                <h3>More providers</h3>
+                <ul>
+                    <li>Gemini support</li>
+                    <li>OpenCode support</li>
+                </ul>
+            ]]></description>
+            <pubDate>Tue, 01 Apr 2026 22:20:00 -0700</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/ryanstephen/lil-agents/releases/download/v1.2/LilAgents-v1.2.zip"
+                type="application/octet-stream"
+                sparkle:edSignature="2oE8UWHerwyUHhACeeww6LiEe42/DRmxwzhgP6jgwyO+Y8LhULd38wKVHQcOM9ZxbbGsEAGSPFSQ49FPuMARDw=="
+                length="20817167"
+            />
+        </item>
         <item>
             <title>v1.1.1</title>
             <description>Fix Codex multi-turn conversations, strip CLAUDECODE env var, compressed README hero image.</description>
